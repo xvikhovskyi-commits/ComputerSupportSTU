@@ -1,0 +1,99 @@
+---
+title: "Task1"
+author: "Vikhovskyi Ruslan"
+date: "25/10/2025"
+format:
+  html:
+    embed-resources: true
+editor: source
+---
+
+## Question 1 title
+
+Question description
+
+```{r}
+# code for solving task
+
+#integer 
+popilation <-29523011
+num_districts <- 8
+num_buildings <-105000
+
+#numeric
+area <-847.66 #square kilometers
+population_density <- 2952301 / 847.66
+average_altitude <- 179.0
+river_length <- 22.0 
+
+
+#character 
+city_name <-"Kyiv"
+citu_old_mane <-"Kiev"
+country <-"Ukraine"
+
+#logical
+is_capital <- TRUE
+is_on_river <- TRUE
+
+#Vectors 
+
+numeric_vector <- c(popilation, num_districts, num_buildings, area, population_density, average_altitude, river_length)
+sequence_vector <- seq(20, 100, by = 5)
+logical_vector <- sample(c(TRUE, FALSE), size = 10, replace = TRUE)
+
+
+# Matrix 
+city_matrix <- matrix(sample(-50:50, 9, replace = TRUE), nrow = 3, ncol = 3)
+rownames(city_matrix) <- c("Center", "Left_Bank", "Right_Bank")
+colnames(city_matrix)<-c("Temperature","Pollution","Population_Index")
+row_avg <- rowMeans(city_matrix)
+col_avg <- colMeans(city_matrix)
+
+
+# List
+kyiv_universe <- list(
+  population = popilation,
+  area = area,
+  city_name = city_name,
+  is_capital = is_capital,
+  numeric_vector = numeric_vector,
+  sequence_vector = sequence_vector,
+  logical_vector = logical_vector,
+  city_matrix = city_matrix,
+  description = "Kyiv is the capital of Ukraine, a historic city located on the Dnipro River."
+)
+
+
+# Factor 
+pollution_level <- factor(c("low", "medium", "medium", "high", "low", "high"))
+table(pollution_level)
+
+
+#Data Frame
+districts_df <- data.frame(
+  district = c("Shevchenkivskyi", "Pecherskyi", "Obolonskyi", "Darnytskyi", "Podilskyi"),
+  population = c(220000, 150000, 190000, 270000, 130000),
+  has_metro = c(TRUE, TRUE, TRUE, FALSE, TRUE),
+  pollution = factor(c("medium", "medium", "low", "high", "low"))
+)
+
+colnames(districts_df) <- c("District", "Population", "Has_Metro", "Pollution_Level")
+
+str(districts_df)
+summary(districts_df)
+
+# Add a new column (e.g., Density = Population / 10)
+districts_df$Density <- districts_df$Population / 10
+```
+
+
+
+## Question N title
+
+Question description
+
+```{r}
+# code for solving task
+```
+
