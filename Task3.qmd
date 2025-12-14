@@ -1,0 +1,210 @@
+---
+title: "Task3"
+author: "Vikhovskyi Ruslan"
+date: "07/11/2025"
+format:
+  html:
+    embed-resources: true
+editor: source
+---
+
+## Question 1 title
+
+Question description
+
+```{r}
+# code for solving task
+
+#integer 
+popilation <-29523011
+num_districts <- 8
+num_buildings <-105000
+
+#numeric
+area <-847.66 #square kilometers
+population_density <- 2952301 / 847.66
+average_altitude <- 179.0
+river_length <- 22.0 
+
+
+#character 
+city_name <-"Kyiv"
+citu_old_mane <-"Kiev"
+country <-"Ukraine"
+
+#logical
+is_capital <- TRUE
+is_on_river <- TRUE
+
+#Vectors 
+
+numeric_vector <- c(popilation, num_districts, num_buildings, area, population_density, average_altitude, river_length)
+sequence_vector <- seq(20, 100, by = 5)
+logical_vector <- sample(c(TRUE, FALSE), size = 10, replace = TRUE)
+
+
+# Matrix 
+city_matrix <- matrix(sample(-50:50, 9, replace = TRUE), nrow = 3, ncol = 3)
+rownames(city_matrix) <- c("Center", "Left_Bank", "Right_Bank")
+colnames(city_matrix)<-c("Temperature","Pollution","Population_Index")
+row_avg <- rowMeans(city_matrix)
+col_avg <- colMeans(city_matrix)
+
+
+# List
+kyiv_universe <- list(
+  population = popilation,
+  area = area,
+  city_name = city_name,
+  is_capital = is_capital,
+  numeric_vector = numeric_vector,
+  sequence_vector = sequence_vector,
+  logical_vector = logical_vector,
+  city_matrix = city_matrix,
+  description = "Kyiv is the capital of Ukraine, a historic city located on the Dnipro River."
+)
+
+
+# Factor 
+pollution_level <- factor(c("low", "medium", "medium", "high", "low", "high"))
+table(pollution_level)
+
+
+#Data Frame
+districts_df <- data.frame(
+  district = c("Shevchenkivskyi", "Pecherskyi", "Obolonskyi", "Darnytskyi", "Podilskyi"),
+  population = c(220000, 150000, 190000, 270000, 130000),
+  has_metro = c(TRUE, TRUE, TRUE, FALSE, TRUE),
+  pollution = factor(c("medium", "medium", "low", "high", "low"))
+)
+
+colnames(districts_df) <- c("District", "Population", "Has_Metro", "Pollution_Level")
+
+str(districts_df)
+summary(districts_df)
+
+# Add a new column (e.g., Density = Population / 10)
+districts_df$Density <- districts_df$Population / 10
+
+# Work with sequence_vector
+
+# 3rd element
+sequence_vector[3]
+
+# Elements 2 through 5
+sequence_vector[2:5]
+
+# Values greater than 50 (или можешь поставить любое число)
+sequence_vector[sequence_vector > 50]
+
+
+# Work with logical_vector
+
+# Only TRUE values  
+logical_vector[logical_vector]
+
+# Indices of TRUE values
+which(logical_vector)
+
+# Access the description using $
+kyiv_universe$description
+
+# Access the matrix (city_matrix)
+kyiv_universe[[8]]
+
+# Access the 2nd element from numeric_vector (which is element #5 in list)
+kyiv_universe$numeric_vector[2]
+
+# Print first 3 rows
+head(districts_df, 3)
+
+# Value from 4th row, 1st column
+districts_df[4, 1]
+
+# Print logical column as a vector
+districts_df$Has_Metro
+
+# Logical subsetting: keep only districts where population > 180000
+df_subset <- districts_df[districts_df$Population > 180000, ]
+
+# %in% subsetting: keep only "high" and "low" pollution districts
+df_subset_2 <- districts_df[districts_df$Pollution_Level %in% c("high", "low"), ]
+
+# Make a corrupted copy
+df_corrupted <- districts_df
+
+# Introduce 3 missing values (NA)
+df_corrupted[2, 3] <- NA
+df_corrupted[4, 2] <- NA
+df_corrupted[5, 4] <- NA
+
+# Count total NA
+sum(is.na(df_corrupted))
+
+# Count NA in each column
+colSums(is.na(df_corrupted))
+
+# Mean of Population (ignore NA)
+mean(df_corrupted$Population, na.rm = TRUE)
+
+# Remove all rows with NA
+df_clean <- na.omit(df_corrupted)
+
+# Find row with highest population
+highest_pop_index <- which.max(districts_df$Population)
+districts_df[highest_pop_index, ]
+
+# Data from: https://data.gov.ua/dataset/676fd61a-a5a3-458a-ac53-c6fcae4a949e
+
+library(dplyr)
+library(readr)
+
+stops <- read_csv("stops.csv")
+
+glimpse(stops)
+head(stops)
+summary(stops)
+
+# Question 1:
+# Which 10 stops have the highest stopId values?
+stops %>%
+  select(stopId, stopName) %>%
+  arrange(desc(stopId)) %>%
+  head(10)
+
+# Question 2:
+# How many stops exist in each Level-1 administrative unit?
+stops %>%
+  group_by(addressAdminUnitL1) %>%
+  summarise(total_stops = n())
+
+# Question 3:
+# Select all stops located in the "Dniprovska" administrative unit (if exists).
+stops %>%
+  filter(addressAdminUnitL2 == "Dniprovska")
+
+# Question 4:
+# Create a new column showing the length of each stop name.
+stops %>%
+  mutate(name_length = nchar(stopName)) %>%
+  select(stopName, name_length)
+
+# Question 5:
+# Which administrative unit (Level-2) has the longest average stopName length?
+stops %>%
+  mutate(name_length = nchar(stopName)) %>%
+  group_by(addressAdminUnitL2) %>%
+  summarise(avg_name_length = mean(name_length, na.rm = TRUE)) %>%
+  arrange(desc(avg_name_length))
+
+```
+
+
+## Question N title
+
+Question description
+
+```{r}
+# code for solving task
+```
+
