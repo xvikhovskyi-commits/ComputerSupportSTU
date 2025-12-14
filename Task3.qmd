@@ -112,7 +112,8 @@ kyiv_universe$description
 # Access the matrix (city_matrix)
 kyiv_universe[[8]]
 
-# Access the 2nd element from numeric_vector (which is element #5 in list)
+# Access the 2nd element from numeric_vector 
+
 kyiv_universe$numeric_vector[2]
 
 # Print first 3 rows
@@ -207,5 +208,6 @@ Question description
 ```{r}
 # code for solving task
 ```
+
 
 
