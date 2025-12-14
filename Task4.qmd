@@ -94,7 +94,7 @@ sequence_vector[3]
 # Elements 2 through 5
 sequence_vector[2:5]
 
-# Values greater than 50 (или можешь поставить любое число)
+# Values greater than 50 
 sequence_vector[sequence_vector > 50]
 
 
@@ -259,4 +259,5 @@ Question description
 ```{r}
 # code for solving task
 ```
+
 
